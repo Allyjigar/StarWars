@@ -1,0 +1,24 @@
+
+<body class="container">
+  <h1 class="col-12 d-flex justify-content-center">
+    <img routerLink="/spaceships" class="col-12 col-sm-2 d-flex" src="../../../assets/star-wars-2.svg" alt="logo Star Wars">
+  </h1>
+  <div class="col-12 d-flex justify-content-center align-items-center vh-75 text-warning">
+    <form [formGroup]="loginForm" #form='ngForm' (ngSubmit)="login()" class="col-sm-6 col-lg-4 d-flex flex-column">
+      <div class="d-flex flex-column align-items-center">
+        <input type="text" placeholder=" EMAIL" formControlName="email" #email class="col-8 rounded-pill border-0 m-2 p-1">
+        <p *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched" class="validation-error" >Please, enter a valid email</p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <input type="text" placeholder=" PASSWORD" formControlName="password" #password class="col-8 rounded-pill border-0 m-2 p-1">
+        <p *ngIf="!loginUser && form.submitted" class=validation-error>Invalid email or password</p>
+      </div>
+
+      <div class="d-flex flex-column align-items-center">
+        <button type="submit" class="col-6 rounded-pill border-0 m-2 p-2 text-warning" [disabled]="!loginForm.valid">LOG IN</button>
+        <a routerLink="/register"class="text-center text-warning">Oops I'm not registered</a>
+      </div>
+    </form>
+  </div>
+</body>
+

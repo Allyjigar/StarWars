@@ -1,0 +1,13 @@
+
+.list:hover, button:hover{
+  background-color: #CBC3BE;
+  color: #000;
+}
+
+p, button{
+  color: #CBC3BE;
+}
+
+body{
+  background-color: #000;
+}

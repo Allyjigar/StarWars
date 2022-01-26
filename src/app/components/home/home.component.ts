@@ -1,5 +1,3 @@
-
-import { SpaceshipService } from './../../services/spaceship.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,19 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  spaceshipList: any;
-
-  constructor(private spaceshipService: SpaceshipService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getAllSpaceships();
-  }
-
-  getAllSpaceships(){
-    this.spaceshipService.getAllSpaceships().subscribe(spaceship => {
-      this.spaceshipList = spaceship.results;
-      console.log(this.spaceshipList);
-    });
   }
 
 }

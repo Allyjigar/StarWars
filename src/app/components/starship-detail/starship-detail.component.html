@@ -1,0 +1,22 @@
+<app-header></app-header>
+<body>
+  <div class="container d-flex flex-column align-items-center mt-5">
+    <div class="col-8 d-flex flex-column align-items-center">
+      <img class="col-10" src="{{spaceshipImage}}" (error)="imageDefault()">
+      <hr>
+      <h2 class="text-uppercase">{{spaceship.name}}</h2>
+      <div class="d-flex justify-content-center">
+        <p class="col-6">Model: {{spaceship.model}}</p>
+        <p class="col-6">Manufacturer: {{spaceship.manufacturer}}</p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <p class="col-6">Cost in credits: {{spaceship.cost_in_credits}}</p>
+        <p class="col-6">Length: {{spaceship.length}}</p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <p class="col-6">Atmosphering Speed: {{spaceship.max_atmosphering_speed}}</p>
+        <p class="col-6">Crew: {{spaceship.crew}}</p>
+      </div>
+    </div>
+  </div>
+</body>

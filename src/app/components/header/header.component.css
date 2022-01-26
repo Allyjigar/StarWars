@@ -1,0 +1,21 @@
+.button
+{
+  background-color: #000;
+  border: none;
+  color: #CBC3BE;
+  text-decoration: none;
+}
+
+.button:hover, .btnlogin:hover{
+  background-color: #CBC3BE;
+  color: #000;
+}
+
+.iconStorm, .iconChew{
+  width: 2rem;
+}
+
+body{
+  background-color: #000;
+  color: #CBC3BE;
+}

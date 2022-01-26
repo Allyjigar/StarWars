@@ -1,0 +1,26 @@
+
+<body>
+  <h1 class="col-12 d-flex justify-content-center">
+    <img routerLink="/spaceships" class="col-12 col-sm-2 d-flex" src="../../../assets/star-wars-2.svg" alt="logo Star Wars">
+  </h1>
+  <div class="col-12 d-flex justify-content-center align-items-center vh-75 text-warning">
+    <p *ngIf="registeredUser" class="validation-error">This user email already exists</p>
+    <form [formGroup]="registerForm" (ngSubmit)="register()" class="col-sm-6 col-lg-4 d-flex flex-column">
+      <div class="d-flex flex-column align-items-center">
+        <input type="text" placeholder=" Email" formControlName="email" #email class="col-8 rounded-pill border-0 m-2 p-1">
+        <p *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched" class="validation-error" >Please, enter a valid email</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <input type="text" placeholder=" Password" formControlName="password" #password class="col-8 rounded-pill border-0 m-2 p-1">
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <input type="text" placeholder=" Repeat password" formControlName="repassword" #repassword class="col-8 rounded-pill border-0 m-2 p-1">
+        <p *ngIf="registerForm.hasError('notMatch') && registerForm.get('repassword')?.touched" class="validation-error" >Please, the passwords must be equals</p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <button type="submit" class="col-6 rounded-pill border-0 m-2 p-2 text-warning" [disabled]="!registerForm.valid">REGISTER</button>
+        <a routerLink="/login"class="text-center text-warning">Oops I'm already registered</a>
+      </div>
+    </form>
+  </div>
+</body>
