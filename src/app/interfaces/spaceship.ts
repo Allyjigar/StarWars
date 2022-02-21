@@ -7,5 +7,6 @@ export interface Spaceship {
   max_atmosphering_speed: string;
   crew: string;
   url: string;
+  pilots: [];
 
 }

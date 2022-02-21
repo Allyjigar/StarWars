@@ -2,5 +2,5 @@
 
 button:hover{
   background-color: yellow;
-  color: black;
+  color: black !important;
 }

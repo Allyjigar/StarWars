@@ -7,8 +7,9 @@
 }
 
 .button:hover, .btnlogin:hover{
-  background-color: #CBC3BE;
-  color: #000;
+  color: #cbc3be;
+  font-size: large;
+  cursor: pointer;
 }
 
 .iconStorm, .iconChew{
@@ -19,3 +20,9 @@ body{
   background-color: #000;
   color: #CBC3BE;
 }
+
+img{
+  margin-left: 35%;
+  cursor: pointer;
+}
+

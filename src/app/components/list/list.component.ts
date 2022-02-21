@@ -1,9 +1,9 @@
-
+import { UserService } from './../../services/user.service';
 import { SpaceshipService } from '../../services/spaceship.service';
+
 import { Component, OnInit, Inject, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
-import { Spaceship } from 'src/app/interfaces/spaceship';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -12,16 +12,19 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+  [x: string]: any;
 
   spaceshipList: any;
   spaceship: any;
+  loginUser: boolean = false;
   id: any = 0;
   page: number = 1;
   showScrollHeight: number =  200;
   hideScrollHeight: number = 500;
   showGoUpButton: boolean = false;
+  loading: boolean = false;
 
-  constructor(@Inject(DOCUMENT) private document:Document, private spaceshipService: SpaceshipService, private router: Router, private route: ActivatedRoute) { }
+  constructor(@Inject(DOCUMENT) private document:Document, private _spaceshipService: SpaceshipService, private router: Router, private route: ActivatedRoute, private UserService: UserService) { }
 
   ngOnInit(): void {
     this.getAllSpaceships();
@@ -42,7 +45,7 @@ export class ListComponent implements OnInit {
     if(!this.spaceship.next){ return };
 
       this.page++;
-      this.spaceshipService.getAllSpaceships(this.page).subscribe((spaceship: any) => {
+      this._spaceshipService.getAllSpaceships(this.page).subscribe((spaceship: any) => {
         this.spaceship = {
           count: spaceship.count,
           next: spaceship.next,
@@ -65,7 +68,9 @@ export class ListComponent implements OnInit {
   };
 
   getAllSpaceships(): void{
-    this.spaceshipService.getAllSpaceships(this.page).pipe(take(1)).subscribe(spaceship => {
+    this.loading = true;
+    this._spaceshipService.getAllSpaceships(this.page).pipe(take(1)).subscribe(spaceship => {
+      this.loading = false;
       this.spaceship = {
         count: spaceship.count,
         next: spaceship.next,

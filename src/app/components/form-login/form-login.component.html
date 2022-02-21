@@ -9,13 +9,15 @@
         <input type="text" placeholder=" EMAIL" formControlName="email" #email class="col-8 rounded-pill border-0 m-2 p-1">
         <p *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched" class="validation-error" >Please, enter a valid email</p>
       </div>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex flex-column align-items-center">
         <input type="text" placeholder=" PASSWORD" formControlName="password" #password class="col-8 rounded-pill border-0 m-2 p-1">
-        <p *ngIf="!loginUser && form.submitted" class=validation-error>Invalid email or password</p>
+        <p *ngIf="!loginUser && form.submitted" class=validation-error>Are you registered? If you are registered, please verify your mail or your password.</p>
       </div>
 
       <div class="d-flex flex-column align-items-center">
-        <button type="submit" class="col-6 rounded-pill border-0 m-2 p-2 text-warning" [disabled]="!loginForm.valid">LOG IN</button>
+        <div class="d-flex col-6 justify-content-center">
+          <button type="submit" class="col-6 rounded-pill border-0 m-2 p-2 text-warning" [disabled]="!loginForm.valid">LOG IN</button>
+        </div>
         <a routerLink="/register"class="text-center text-warning">Oops I'm not registered</a>
       </div>
     </form>

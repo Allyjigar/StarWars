@@ -1,15 +1,20 @@
+
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
-  registeredUsers: User[] = [];
-  loginUser: boolean = false;
+  public registeredUsers: User[] = [];
+  public loginUser: boolean = false;
 
   constructor() {
+
     if (window.localStorage.getItem('users')) {
       const users = JSON.parse(window.localStorage.getItem('users')?? '[]');
       this.registeredUsers = users;
@@ -19,6 +24,7 @@ export class UserService {
       this.loginUser = JSON.parse(window.localStorage.getItem('loginUser')?? 'false');
     }
   }
+
 
   setStorage(user: User): void {
     if (!this.registedUser(user.email)) {

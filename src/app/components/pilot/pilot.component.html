@@ -1,0 +1,14 @@
+
+<div *ngFor="let pilot of pilots" class="col-6 d-flex flex-column justify-content-start">
+  <div class="mt-3">
+    <p class="text-warning fw-bold">Pilot:</p> <br>
+  </div>
+  <img src="{{pilotImg}}">
+  <h4 class="text-decoration-underline">{{pilot.name}}:</h4>
+  <div>
+    <p><span class="fw-bold text-warning">Height: </span>{{pilot.height}}</p>
+    <p><span class="fw-bold text-warning">Mass: </span>{{pilot.mass}}</p>
+    <p><span class="fw-bold text-warning">Hair and eye color: </span> {{pilot.hair_color}} and {{pilot.eye_color}} </p>
+    <p><span class="fw-bold text-warning">Gender: </span>{{pilot.gender}}</p>
+  </div>
+</div>

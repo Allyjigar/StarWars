@@ -1,7 +1,9 @@
+import { Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { User } from 'src/app/interfaces/user';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -10,9 +12,10 @@ import { User } from 'src/app/interfaces/user';
 })
 export class RegisterComponent implements OnInit {
 
-  registeredUser: boolean = false;
+  public registeredUser: boolean = false;
 
-  constructor(private UserService: UserService) { }
+
+  constructor(private _userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,8 +26,6 @@ export class RegisterComponent implements OnInit {
 
     return password === repassword ? null : { notMatch: true };
   }
-
-
 
   registerForm: FormGroup = new FormGroup ({
     'email': new FormControl('', [Validators.required, Validators.email]),
@@ -38,8 +39,14 @@ export class RegisterComponent implements OnInit {
       password: this.registerForm.get('password')?.value
     }
 
-    this.registeredUser = this.UserService.registedUser(newUser.email);
-    this.UserService.setStorage(newUser);
+    this.registeredUser = this._userService.registedUser(newUser.email);
+    this._userService.setStorage(newUser);
+    Swal.fire(
+      'Welcome ' + this.registerForm.get('email')?.value + '!',
+      'Your registration has been successful',
+      'success'
+    );
+    this.router.navigate(['/login']);
 
     console.log(newUser);
   }

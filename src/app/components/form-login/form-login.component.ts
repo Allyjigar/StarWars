@@ -1,4 +1,5 @@
 import { UserService } from './../../services/user.service';
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,7 +13,7 @@ export class FormLoginComponent implements OnInit {
 
   loginUser: boolean = false;
 
-  constructor(private UserService: UserService, private router: Router) { }
+  constructor(private _userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,12 +24,12 @@ export class FormLoginComponent implements OnInit {
   });
 
   login(){
-    this.loginUser = this.UserService.valida({
+    this.loginUser = this._userService.valida({
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value
     });
     if(this.loginUser){
-      this.router.navigate(['/starships']);
+      this.router.navigate(['/spaceships']);
     }
   }
 }
